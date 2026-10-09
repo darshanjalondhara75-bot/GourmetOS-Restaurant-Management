@@ -1,0 +1,351 @@
+{
+  "info": {
+    "_postman_id": "gourmetos-notifications-apis-collection",
+    "name": "GourmetOS - Notifications, Order & Shift APIs",
+    "description": "Complete Postman collection for GourmetOS Notifications, Shift Notifications, and Order Notifications",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "🔐 1. Authentication",
+      "item": [
+        {
+          "name": "Login as Admin (Get Bearer Token)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@gourmet.com\",\n  \"password\": \"adminpassword\",\n  \"requested_role\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/auth/login",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔔 2. Notifications APIs",
+      "item": [
+        {
+          "name": "List All Notifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications"]
+            }
+          }
+        },
+        {
+          "name": "Filter Notifications by Type (Shift)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications?type=shift",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications"],
+              "query": [{ "key": "type", "value": "shift" }]
+            }
+          }
+        },
+        {
+          "name": "Filter Notifications by Type (Order)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications?type=order",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications"],
+              "query": [{ "key": "type", "value": "order" }]
+            }
+          }
+        },
+        {
+          "name": "Get Unread Notifications Count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/unread-count",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "unread-count"]
+            }
+          }
+        },
+        {
+          "name": "Create General Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Shift Timing Update\",\n  \"message\": \"Evening shift will start at 04:30 PM today.\",\n  \"type\": \"shift\",\n  \"target_role\": \"all\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications"]
+            }
+          }
+        },
+        {
+          "name": "Create Order Notification (Helper)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/order?title=New%20Order%20Alert&message=Table%202%20placed%20order%20ORD-101&target_role=all",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "order"],
+              "query": [
+                { "key": "title", "value": "New Order Alert" },
+                { "key": "message", "value": "Table 2 placed order ORD-101" },
+                { "key": "target_role", "value": "all" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Shift Notification (Helper)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/shift?title=Shift%20Assigned&message=Chef%20John%20assigned%20to%20Night%20shift&target_role=all",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "shift"],
+              "query": [
+                { "key": "title", "value": "Shift Assigned" },
+                { "key": "message", "value": "Chef John assigned to Night shift" },
+                { "key": "target_role", "value": "all" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Mark Notification as Read",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/ntf_1725195600000/read",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "ntf_1725195600000", "read"]
+            }
+          }
+        },
+        {
+          "name": "Mark All Notifications as Read",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/read-all",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "read-all"]
+            }
+          }
+        },
+        {
+          "name": "Clear Read Notifications",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/clear-read",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "clear-read"]
+            }
+          }
+        },
+        {
+          "name": "Delete Single Notification",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/notifications/ntf_1725195600000",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "notifications", "ntf_1725195600000"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🕒 3. Shift Management (Auto-Triggers Shift Notifications)",
+      "item": [
+        {
+          "name": "Create Shift (Triggers Shift Notification)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shift_name\": \"Morning Shift\",\n  \"start_time\": \"08:00 AM\",\n  \"end_time\": \"04:00 PM\",\n  \"assigned_user\": \"Chef Alex\",\n  \"status\": \"Active\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/shifts",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "shifts"]
+            }
+          }
+        },
+        {
+          "name": "Assign Staff to Shift (Triggers Notification)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assigned_user\": \"Cashier Sarah\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/shifts/shf_1725196000/assign",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "shifts", "shf_1725196000", "assign"]
+            }
+          }
+        },
+        {
+          "name": "Update Shift Status (Triggers Notification)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/shifts/shf_1725196000/status?status=Closed",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "shifts", "shf_1725196000", "status"],
+              "query": [{ "key": "status", "value": "Closed" }]
+            }
+          }
+        },
+        {
+          "name": "Delete Shift (Triggers Notification)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/shifts/shf_1725196000",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "shifts", "shf_1725196000"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📦 4. Order Management (Auto-Triggers Order Notifications)",
+      "item": [
+        {
+          "name": "Create Public Order (Triggers Order Notification)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"table_number\": \"3\",\n  \"customer_name\": \"John Doe\",\n  \"items\": [\n    {\n      \"item_id\": \"itm_001\",\n      \"name\": \"Truffle Pasta\",\n      \"quantity\": 2,\n      \"price\": 18.5,\n      \"notes\": \"Extra parmesan cheese\"\n    }\n  ],\n  \"special_instructions\": \"Serve beverages first.\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/orders",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "orders"]
+            }
+          }
+        },
+        {
+          "name": "Update Order Status (Triggers Notification)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Cooking\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/orders/ORD-1725197000000/status",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "orders", "ORD-1725197000000", "status"]
+            }
+          }
+        },
+        {
+          "name": "Process Payment (Triggers Notification)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_status\": \"Paid\",\n  \"payment_method\": \"Cash\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/orders/ORD-1725197000000/pay",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["api", "orders", "ORD-1725197000000", "pay"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
