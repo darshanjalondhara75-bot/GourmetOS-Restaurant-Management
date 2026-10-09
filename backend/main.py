@@ -49,7 +49,7 @@ app.add_middleware(RealtimeActivityMiddleware)
 # 2. Register CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=CORS_ORIGINS,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

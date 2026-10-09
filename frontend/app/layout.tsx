@@ -7,6 +7,7 @@ import { LuxuryBackground } from "@/components/LuxuryBackground";
 import { BRAND_FULL_NAME, BRAND_NAME } from "@/lib/branding";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Darshan Jalondhara | Python Backend & Next.js Frontend Developer",
   description: "Professional portfolio, technical resume, and detailed case study of Darshan Jalondhara — Python Backend & Next.js Frontend Developer specializing in full-stack architecture, role-based dashboards, and restaurant management systems.",
   openGraph: {

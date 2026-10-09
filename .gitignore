@@ -1,66 +1,56 @@
-# ==========================================
-# GOURMET OS - ROOT GITIGNORE
-# ==========================================
+# ============ Python ============
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.spec
+.eggs/
 
-# Dependencies
-node_modules/
-*/node_modules/
-.pnp
-.pnp.js
-
-# Python Virtual Environments & Caches
+# Virtual environments
 .venv/
-*/.venv/
 venv/
 ENV/
 env/
-__pycache__/
-*/__pycache__/
-*/**/__pycache__/
-*.py[cod]
-*$py.class
-*.pytest_cache/
-.coverage
-htmlcov/
 
-# Next.js & Build Outputs
-.next/
-*/.next/
-out/
-build/
-dist/
-*.tsbuildinfo
-next-env.d.ts
-
-# Environment Variables & Secrets (NEVER COMMIT SENSITIVE KEYS)
+# ============ Environment / Secrets ============
 .env
-.env*.local
-.env.development.local
-.env.test.local
-.env.production.local
-backend/.env
-frontend/.env.local
-frontend/.env*.local
-*.env
-!*.env.example
-!frontend/.env.example
-!backend/.env.example
+.env.*
+!.env.example
 
-# IDE, OS & Editor Files
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-.DS_Store
-Thumbs.db
-Desktop.ini
-
-# Logs & Debugging
-*.log
+# ============ Node / Next.js ============
+node_modules/
+.next/
+.nuxt/
+dist/
+out/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+
+# ============ IDE / Editor ============
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# ============ Logs ============
+logs/
+*.log
+
+# ============ Docker ============
+.dockerignore
+
+# ============ OS ============
+.DS_Store
+ehthumbs.db
+Desktop.ini
