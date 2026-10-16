@@ -258,20 +258,26 @@ export default function PortfolioNavbar({ onOpenResumeModal }: { onOpenResumeMod
           {/* Menu Items */}
           <div className="flex-1 overflow-y-auto py-4">
             <nav className="space-y-1 px-3">
-              {NAV_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition"
-                  >
-                    <Icon className="w-4 h-4 text-emerald-500" />
-                    {item.label}
-                  </a>
-                );
-              })}
+                  {NAV_ITEMS.map((item) => {
+                    const Icon = item.icon;
+                    const id = item.href.replace("#", "");
+                    const isActive = activeSection === id;
+                    return (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition ${
+                          isActive
+                            ? "bg-emerald-500/10 text-emerald-500 border-l-4 border-emerald-500"
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                        }`}
+                      >
+                        <Icon className={`w-4 h-4 ${isActive ? "text-emerald-500" : "text-emerald-500"}`} />
+                        {item.label}
+                      </a>
+                    );
+                  })}
             </nav>
 
             {/* Divider */}

@@ -85,22 +85,22 @@ export default function KitchenPanelPage() {
             <div className={`h-1 w-full ${accentColor}`} />
             <div className="p-4 space-y-3">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-sm font-black text-slate-900 dark:text-slate-100 break-all">{ord.order_id}</span>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md shrink-0 ${statusColor}`}>
+                <span className="text-sm font-black text-slate-900 dark:text-slate-100 whitespace-nowrap">{ord.order_id}</span>
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md shrink-0 whitespace-nowrap ${statusColor}`}>
                   Table {ord.table_number}
                 </span>
               </div>
               {ord.order_token && (
-                <p className="text-[10px] font-black tracking-wide text-[#176b57] dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900/50 rounded-lg px-2 py-1">
+                <p className="text-[10px] font-black tracking-wide text-[#176b57] dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900/50 rounded-lg px-2 py-1 whitespace-nowrap">
                   Order token {ord.order_token}
                 </p>
               )}
 
               <div className="space-y-1.5">
                 {ord.items.map((it: any, i: number) => (
-                  <div key={i} className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300">
-                    <span className="text-slate-400 dark:text-slate-500 font-bold">{it.quantity}x</span>
-                    <span className="break-words whitespace-normal leading-tight">{it.name}</span>
+                  <div key={i} className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300 min-w-0">
+                    <span className="text-slate-400 dark:text-slate-500 font-bold shrink-0">{it.quantity}x</span>
+                    <span className="whitespace-nowrap leading-tight truncate min-w-0">{it.name}</span>
                   </div>
                 ))}
               </div>

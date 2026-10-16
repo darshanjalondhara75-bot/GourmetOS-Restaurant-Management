@@ -48,7 +48,7 @@ export default function DevelopmentJourneySection() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xl font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/20">
+                    <span className="shrink-0 whitespace-nowrap font-mono text-xl font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-xl border border-emerald-500/20">
                       {m.step}
                     </span>
                     <span className="text-[10px] uppercase font-mono font-bold text-slate-400 bg-slate-800 px-2 py-0.5 rounded">

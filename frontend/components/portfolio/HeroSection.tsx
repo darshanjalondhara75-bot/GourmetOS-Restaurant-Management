@@ -45,18 +45,18 @@ export default function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
           {/* Left Column: Core Identity & Call to Actions (7 cols) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left min-w-0 w-full">
             {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold tracking-wide mb-5 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Full-Stack Software Engineering Portfolio</span>
+            <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] sm:text-xs font-semibold tracking-wide mb-5 shadow-sm max-w-full">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span className="truncate sm:whitespace-normal">Full-Stack Software Engineering Portfolio</span>
             </div>
 
-            {/* Name */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-100 uppercase mb-3 break-words">
-              <span className="block">{PORTFOLIO_DATA.profile.name}</span>
+            {/* Name - kept full on one line without splitting on mobile */}
+            <h1 className="text-[clamp(1.2rem,5.8vw,3.75rem)] font-extrabold tracking-tight text-slate-100 uppercase mb-3 whitespace-nowrap max-w-full">
+              <span>{PORTFOLIO_DATA.profile.name}</span>
             </h1>
 
             {/* Professional Title */}
-            <div className="text-base sm:text-2xl lg:text-3xl font-semibold tracking-tight text-emerald-400 mb-5 leading-snug break-words">
+            <div className="text-sm sm:text-2xl lg:text-3xl font-semibold tracking-normal sm:tracking-tight text-emerald-400 mb-5 leading-snug break-words">
               {PORTFOLIO_DATA.profile.title}
             </div>
 
@@ -66,13 +66,13 @@ export default function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
             </p>
 
             {/* Academic Credentials Verified Banner */}
-            <div className="flex items-start sm:items-center gap-2 p-2.5 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-900/60 dark:bg-slate-900/80 border border-emerald-500/20 text-xs sm:text-sm text-slate-300 mb-8 w-full max-w-full">
+            <div className="flex items-start sm:items-center gap-2.5 p-3 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-900/60 dark:bg-slate-900/80 border border-emerald-500/20 text-xs sm:text-sm text-slate-300 mb-8 w-full max-w-full min-w-0">
               <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
-              <div className="leading-snug break-words">
-                <span className="font-semibold text-slate-200 block sm:inline">
+              <div className="leading-snug break-words min-w-0 w-full">
+                <span className="font-semibold text-slate-200">
                   {PORTFOLIO_DATA.profile.education.institution}
                 </span>{" "}
-                <span className="text-emerald-400 font-mono text-[11px] sm:text-xs">
+                <span className="text-emerald-400 font-mono text-[10px] sm:text-xs whitespace-nowrap">
                   ({PORTFOLIO_DATA.profile.education.period})
                 </span>
               </div>
@@ -113,7 +113,7 @@ export default function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
               <span className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-3 block">
                 Primary Verified Tech Stack
               </span>
-              <div className="flex flex-wrap gap-2 text-xs">
+              <div className="flex flex-wrap gap-2 text-[10px] sm:text-xs">
                 {[
                   "Python 3",
                   "FastAPI",
@@ -126,7 +126,7 @@ export default function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
                 ].map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-emerald-500/20 text-slate-300 font-medium flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-emerald-500/20 text-slate-300 font-medium flex items-center gap-1.5 whitespace-nowrap"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     {tech}

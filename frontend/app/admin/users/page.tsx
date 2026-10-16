@@ -28,6 +28,7 @@ import {
   Shield,
 } from "lucide-react";
 import { CustomSelect } from "@/components/CustomSelect";
+import { AppShell } from "@/components/AppShell";
 import { PageWrapper } from "@/components/PageWrapper";
 
 const ROLE_BADGE: Record<string, string> = {
@@ -129,7 +130,7 @@ export default function UserManagementPage() {
 
   return (
     <PageWrapper>
-      <div className="min-h-screen bg-[#f7f8fc] dark:bg-slate-950 flex flex-col transition-colors duration-300">
+      <div className="page-with-fixed-nav min-h-screen bg-[#f7f8fc] dark:bg-slate-950 flex flex-col transition-colors duration-300">
       <Navbar />
       <div className="flex flex-1">
         <Sidebar />
@@ -226,11 +227,11 @@ export default function UserManagementPage() {
 
                   {/* Management Section */}
                   <div className="bg-slate-50/50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 p-3 flex items-center justify-between gap-4">
-                    <div className="flex-1 min-w-0 flex items-center gap-3">
+                    <div className="flex-1 min-w-0 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
                       <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400 dark:text-slate-500 shrink-0">
                         Account Role
                       </span>
-                      <div className="relative group flex-1 flex items-center">
+                      <div className="relative group flex-1 min-w-0 flex items-center">
                         {u.role === "admin" ? (
                           <span className="text-xs font-bold text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-2 py-1 rounded-md ring-1 ring-purple-200 dark:ring-purple-800">
                             Protected Admin
@@ -243,7 +244,7 @@ export default function UserManagementPage() {
                               { label: "👨‍🍳 Chef", value: "chef" },
                             ]}
                             onChange={(val) => handleRoleChange(u.id, val)}
-                            className="w-full dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
+                            className="w-full sm:w-32 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
                           />
                         )}
                       </div>
@@ -252,7 +253,7 @@ export default function UserManagementPage() {
                     <button
                       onClick={() => handleDelete(u.id, u.name)}
                       disabled={deletingId === u.id}
-                      className="p-2.5 rounded-xl text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all group-hover:bg-white dark:group-hover:bg-slate-800 group-hover:shadow-sm group-hover:border-slate-100 dark:group-hover:border-slate-700 border border-transparent disabled:opacity-40 shrink-0 flex items-center justify-center"
+                      className="p-2.5 rounded-xl text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-all group-hover:bg-white dark:group-hover:bg-slate-800 group-hover:shadow-sm group-hover:border-slate-100 dark:group-hover:border-slate-700 border border-transparent disabled:opacity-40 shrink-0 self-end sm:self-center flex items-center justify-center"
                       title="Delete user"
                     >
                       <Trash2 className="w-4 h-4" />

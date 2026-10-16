@@ -359,17 +359,17 @@ function TableBookingContent() {
       )}
 
       <div className="grid grid-cols-3 gap-2 sm:gap-3">
-        <div className="bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
-          <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wide text-slate-400">Available</div>
-          <div className="text-lg sm:text-2xl font-black text-emerald-600 mt-1">{availableCount}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm text-center">
+          <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wide text-slate-400 whitespace-nowrap">Available</div>
+          <div className="text-lg sm:text-2xl font-black text-emerald-600 mt-1 font-mono">{availableCount}</div>
         </div>
-        <div className="bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
-          <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wide text-slate-400">Reserved</div>
-          <div className="text-lg sm:text-2xl font-black text-indigo-600 mt-1">{reservedCount}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm text-center">
+          <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wide text-slate-400 whitespace-nowrap">Reserved</div>
+          <div className="text-lg sm:text-2xl font-black text-indigo-600 mt-1 font-mono">{reservedCount}</div>
         </div>
-        <div className="bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm">
-          <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wide text-slate-400">Occupied</div>
-          <div className="text-lg sm:text-2xl font-black text-amber-600 mt-1">{occupiedCount}</div>
+        <div className="bg-white dark:bg-slate-900 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-sm text-center">
+          <div className="text-[9px] sm:text-[10px] font-black uppercase tracking-wide text-slate-400 whitespace-nowrap">Occupied</div>
+          <div className="text-lg sm:text-2xl font-black text-amber-600 mt-1 font-mono">{occupiedCount}</div>
         </div>
       </div>
 
@@ -382,7 +382,7 @@ function TableBookingContent() {
               Every table belongs to a tier — Basic, Middle or VIP — with its own experience and services.
             </p>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-black text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-black text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300 whitespace-nowrap">
             <ShieldCheck className="w-3.5 h-3.5" /> Razorpay secured
           </span>
         </div>
@@ -401,7 +401,7 @@ function TableBookingContent() {
                     <h3 className={`text-sm sm:text-base font-black ${tier.accentText}`}>{tier.tier}</h3>
                     <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400">{tier.tagline}</p>
                   </div>
-                  <span className={`ml-auto rounded-full px-2 py-0.5 text-[9px] font-black ${tier.accentText} bg-white/70 dark:bg-black/20`}>
+                  <span className={`ml-auto rounded-full px-2 py-0.5 text-[9px] font-black whitespace-nowrap ${tier.accentText} bg-white/70 dark:bg-black/20`}>
                     {isTableCoveredByPlan(tierName, currentPlan)
                       ? "Covered by Plan (₹0)"
                       : `₹${tier.depositINR} deposit`}

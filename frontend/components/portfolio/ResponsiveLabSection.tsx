@@ -171,14 +171,32 @@ export default function ResponsiveLabSection() {
 
               {/* Verified Breakpoints Table */}
               <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 text-xs">
-                <div className="font-semibold text-slate-300 mb-2">Tested Screen Breakpoints:</div>
-                <div className="grid grid-cols-3 gap-2 font-mono text-[11px] text-slate-400">
-                  <div>• 320px (SE)</div>
-                  <div>• 375px (iPhone)</div>
-                  <div>• 390px (Pro)</div>
-                  <div>• 768px (Tablet)</div>
-                  <div>• 1024px (Laptop)</div>
-                  <div>• 1440px+ (Desktop)</div>
+                <div className="font-semibold text-slate-300 mb-2.5">Tested Screen Breakpoints:</div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-400">
+                  <div className="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded border border-slate-800/80 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>320px (SE)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded border border-slate-800/80 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>375px (iPhone)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded border border-slate-800/80 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>390px (Pro)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded border border-slate-800/80 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>768px (Tablet)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded border border-slate-800/80 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>1024px (Laptop)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-slate-900/80 px-2 py-1 rounded border border-slate-800/80 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span>1440px+ (Desktop)</span>
+                  </div>
                 </div>
               </div>
             </div>

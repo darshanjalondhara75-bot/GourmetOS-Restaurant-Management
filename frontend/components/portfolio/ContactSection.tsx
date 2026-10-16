@@ -58,14 +58,14 @@ export default function ContactSection() {
         {/* Contact Cards Grid */}
         <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {/* Email Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-emerald-500/25 backdrop-blur-xl shadow-xl flex flex-col justify-between">
+          <div className="p-5 sm:p-8 rounded-3xl bg-slate-900/80 border border-emerald-500/25 backdrop-blur-xl shadow-xl flex flex-col justify-between min-w-0">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
                 <Mail className="w-6 h-6" />
               </div>
 
               <span className="text-xs uppercase font-mono font-bold text-slate-400">Email Address</span>
-              <div className="text-base sm:text-lg font-bold text-slate-100 mt-1 break-all">
+              <div className="text-xs sm:text-base font-mono font-bold text-slate-100 mt-1 whitespace-nowrap overflow-x-auto select-all max-w-full">
                 {PORTFOLIO_DATA.profile.email}
               </div>
               <p className="text-xs text-slate-400 mt-2">
@@ -76,15 +76,15 @@ export default function ContactSection() {
             <div className="mt-6 pt-4 border-t border-slate-800 flex items-center gap-3">
               <a
                 href={`mailto:${PORTFOLIO_DATA.profile.email}`}
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/30 transition-all text-center"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/30 transition-all text-center whitespace-nowrap"
               >
-                <Send className="w-4 h-4" />
+                <Send className="w-4 h-4 shrink-0" />
                 <span>Email Me</span>
               </a>
 
               <button
                 onClick={copyEmail}
-                className="p-3 rounded-xl bg-slate-950 border border-emerald-500/30 text-emerald-300 hover:bg-slate-800 transition-colors"
+                className="p-3 rounded-xl bg-slate-950 border border-emerald-500/30 text-emerald-300 hover:bg-slate-800 transition-colors shrink-0"
                 title="Copy email to clipboard"
                 aria-label="Copy email address"
               >
@@ -94,14 +94,14 @@ export default function ContactSection() {
           </div>
 
           {/* Phone / Mobile Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-emerald-500/25 backdrop-blur-xl shadow-xl flex flex-col justify-between">
+          <div className="p-5 sm:p-8 rounded-3xl bg-slate-900/80 border border-emerald-500/25 backdrop-blur-xl shadow-xl flex flex-col justify-between min-w-0">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
                 <Phone className="w-6 h-6" />
               </div>
 
               <span className="text-xs uppercase font-mono font-bold text-slate-400">Mobile Contact</span>
-              <div className="text-base sm:text-lg font-bold text-slate-100 mt-1 font-mono">
+              <div className="text-base sm:text-lg font-bold text-slate-100 mt-1 font-mono whitespace-nowrap">
                 +91 {PORTFOLIO_DATA.profile.mobile}
               </div>
               <p className="text-xs text-slate-400 mt-2">

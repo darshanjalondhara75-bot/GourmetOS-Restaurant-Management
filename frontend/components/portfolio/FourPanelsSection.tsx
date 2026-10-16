@@ -48,7 +48,7 @@ export default function FourPanelsSection() {
 
         {/* Panel Selection Tabs */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 mb-10"
+          className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4 mb-10"
           role="tablist"
           aria-label="Restaurant panels"
         >
@@ -58,7 +58,7 @@ export default function FourPanelsSection() {
             return (
               <div
                 key={panel.id}
-                className={`p-4 sm:p-5 rounded-2xl transition-all duration-300 border ${
+                className={`p-3 sm:p-5 rounded-2xl transition-all duration-300 border ${
                   isSelected
                     ? "bg-emerald-500/15 border-emerald-400 text-slate-100 shadow-lg shadow-emerald-500/20"
                     : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-900 hover:border-emerald-500/30"
@@ -73,16 +73,16 @@ export default function FourPanelsSection() {
                   onClick={() => setActivePanelId(panel.id)}
                   className="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded-lg"
                 >
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3">
                     <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center ${
+                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center ${
                         isSelected ? "bg-emerald-500 text-slate-950 font-bold" : "bg-slate-800 text-slate-400"
                       }`}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <span
-                      className={`text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded-full ${
+                      className={`text-[9px] sm:text-[10px] uppercase font-mono font-bold px-1.5 sm:px-2 py-0.5 rounded-full ${
                         isSelected
                           ? "bg-emerald-400 text-slate-950"
                           : "bg-slate-800 text-slate-400"
@@ -92,16 +92,17 @@ export default function FourPanelsSection() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-bold text-slate-100 mb-0.5">{panel.name}</h3>
-                    <p className="text-[11px] text-slate-400 line-clamp-1">{panel.roleTitle}</p>
+                    <h3 className="text-xs sm:text-base font-bold text-slate-100 mb-0.5 leading-tight">{panel.name}</h3>
+                    <p className="text-[10px] sm:text-[11px] text-slate-400 line-clamp-1">{panel.roleTitle}</p>
                   </div>
                 </button>
                 <Link
                   href={`${panel.route}${panel.route.includes("?") ? "&" : "?"}portfolioDemo=1`}
-                  className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-lg border border-emerald-500/25 bg-slate-950/40 px-3 text-xs font-semibold text-emerald-300 transition-colors hover:border-emerald-400/60 hover:bg-emerald-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+                  className="mt-3 sm:mt-4 inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-emerald-500/25 bg-slate-950/40 px-2 sm:px-3 text-[10px] sm:text-xs font-semibold text-emerald-300 transition-colors hover:border-emerald-400/60 hover:bg-emerald-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
                 >
-                  Visit {panel.id} demo
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Visit {panel.id} demo</span>
+                  <span className="sm:hidden">Demo</span>
+                  <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </Link>
               </div>
             );
@@ -176,15 +177,15 @@ export default function FourPanelsSection() {
               </div>
 
               {/* Live Link */}
-              <div className="pt-4 border-t border-slate-800 flex items-center gap-4">
+              <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center gap-3">
                 <Link
                   href={demoRoute}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/30 transition-all"
+                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/30 transition-all"
                 >
                   <span>Open {activePanel.name} Demo</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
-                <span className="text-xs text-slate-400 font-mono">
+                <span className="text-[10px] sm:text-xs text-slate-400 font-mono break-words">
                   Route: {activePanel.route}
                 </span>
               </div>

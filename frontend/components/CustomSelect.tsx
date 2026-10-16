@@ -95,7 +95,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   };
 
   return (
-    <div className={`relative ${className}`} ref={containerRef}>
+    <div className={`relative ${className} min-w-0`} ref={containerRef}>
       <button
         id={id}
         type="button"
@@ -105,7 +105,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         aria-expanded={isOpen}
         onClick={() => (isOpen ? (setIsOpen(false), setQuery("")) : openMenu())}
         className={[
-          "group flex min-h-[46px] w-full items-center justify-between gap-3 rounded-xl border px-3.5 py-2.5 text-sm font-semibold outline-none transition-all popover-trigger",
+          "group flex min-h-[46px] w-full items-center justify-between gap-3 rounded-xl border px-3.5 py-2.5 text-xs sm:text-sm font-semibold outline-none transition-all popover-trigger",
           "bg-white text-slate-700 border-slate-200 shadow-sm",
           "hover:border-slate-300 hover:shadow-md focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10",
           "dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700 dark:hover:border-slate-600",
@@ -117,6 +117,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         </span>
         <ChevronDown className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180 text-emerald-600" : "group-hover:text-slate-600"}`} />
       </button>
+
 
       {isOpen && typeof document !== "undefined" && createPortal(
         <div
@@ -154,13 +155,13 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
                     aria-selected={selected}
                     onClick={() => choose(option)}
                     className={[
-                      "flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-sm transition-all",
+                      "flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-xs sm:text-sm transition-all",
                       selected
                         ? "bg-emerald-50 text-emerald-800 ring-1 ring-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:ring-emerald-900/60"
                         : "text-slate-700 hover:bg-slate-50 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-slate-50",
                     ].join(" ")}
                   >
-                    <span className="truncate font-semibold">{option.label}</span>
+                    <span className="truncate font-semibold min-w-0">{option.label}</span>
                     {selected && <Check className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />}
                   </button>
                 );

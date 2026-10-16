@@ -237,7 +237,7 @@ export default function ReportsPage() {
 
             {/* Scrollable chart on mobile */}
             <div className="overflow-x-auto -mx-2 px-2">
-              <div className="h-48 sm:h-64 flex items-end gap-2 sm:gap-4 pt-6 pb-2 border-b border-slate-200 dark:border-slate-800 min-w-full sm:min-w-[720px]">
+              <div className="h-48 sm:h-64 flex items-end gap-2 sm:gap-4 pt-6 pb-2 border-b border-slate-200 dark:border-slate-800 min-w-full lg:min-w-[720px]">
                 {chartData.map((entry, idx) => {
                   const heightPercent = entry.sales > 0 ? Math.max((entry.sales / maxSales) * 100, 4) : 2;
                   return (
@@ -277,9 +277,9 @@ export default function ReportsPage() {
                         : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 hover:border-indigo-200 dark:hover:border-indigo-800 hover:shadow-md"
                       }`}
                     >
-                      {/* Top Row: Rank, Name, Revenue */}
-                      <div className="flex items-center justify-between gap-3">
-                        <div className="flex items-center gap-3 min-w-0">
+                      {/* Top Row: Rank, Name (full width on mobile) · Category + Revenue */}
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                        <div className="flex min-w-0 flex-1 items-center gap-3">
                           <div className={`flex items-center justify-center w-6 h-6 rounded-full text-[10px] font-black border transition-colors shrink-0 ${
                             isTop
                             ? "bg-indigo-600 text-white border-indigo-600"
@@ -287,15 +287,15 @@ export default function ReportsPage() {
                           }`}>
                             {idx + 1}
                           </div>
-                          <div className="flex items-center gap-2 min-w-0">
-                            <p className="text-sm font-extrabold text-slate-900 dark:text-slate-100 truncate">{item.name}</p>
-                            <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tighter shrink-0">
-                              {item.category}
-                            </span>
-                          </div>
+                          <p className="min-w-0 flex-1 text-sm font-extrabold text-slate-900 dark:text-slate-100 break-words sm:truncate">
+                            {item.name}
+                          </p>
                         </div>
-                        <div className="text-right shrink-0">
-                          <p className="text-sm font-black text-slate-900 dark:text-slate-100 tabular-nums">${item.revenue.toFixed(2)}</p>
+                        <div className="flex shrink-0 items-center justify-between gap-2 sm:justify-end">
+                          <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 font-bold uppercase tracking-tighter shrink-0">
+                            {item.category}
+                          </span>
+                          <p className="text-sm font-black text-slate-900 dark:text-slate-100 tabular-nums shrink-0">${item.revenue.toFixed(2)}</p>
                         </div>
                       </div>
 

@@ -523,29 +523,29 @@ PROJECT EXPERIENCE & MODULES:
         </div>
 
         {/* Formatted Resume Sheet (A4 Styled Card) */}
-        <div id="printable-resume-document" className="resume-print-card max-w-5xl mx-auto p-8 sm:p-12 rounded-3xl bg-slate-950/90 border border-emerald-500/30 backdrop-blur-xl shadow-2xl text-left">
+        <div id="printable-resume-document" className="resume-print-card max-w-5xl mx-auto p-4 sm:p-8 md:p-12 rounded-3xl bg-slate-950/90 border border-emerald-500/30 backdrop-blur-xl shadow-2xl text-left min-w-0">
           {/* Resume Header */}
           <div className="pb-8 border-b border-slate-800 mb-8">
             <div className="resume-header-row flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h1 className="text-3xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight">
+                <h1 className="text-[clamp(1.2rem,5vw,2.25rem)] font-black text-slate-100 uppercase tracking-tight whitespace-nowrap">
                   {PORTFOLIO_DATA.profile.name}
                 </h1>
-                <p className="text-lg font-bold text-emerald-400 mt-1">
+                <p className="text-base sm:text-lg font-bold text-emerald-400 mt-1">
                   {PORTFOLIO_DATA.profile.title}
                 </p>
               </div>
 
               <div className="resume-contact-block text-xs sm:text-sm text-slate-300 space-y-1 sm:text-right font-mono">
-                <div className="resume-contact-item flex items-center sm:justify-end gap-2">
+                <div className="resume-contact-item flex items-center sm:justify-end gap-2 overflow-x-auto">
                   <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <a href={`mailto:${PORTFOLIO_DATA.profile.email}`} className="hover:text-emerald-300 underline">
+                  <a href={`mailto:${PORTFOLIO_DATA.profile.email}`} className="hover:text-emerald-300 underline whitespace-nowrap text-[11px] sm:text-xs">
                     {PORTFOLIO_DATA.profile.email}
                   </a>
                 </div>
                 <div className="resume-contact-item flex items-center sm:justify-end gap-2">
                   <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <a href={`tel:${PORTFOLIO_DATA.profile.mobile}`} className="hover:text-emerald-300">
+                  <a href={`tel:${PORTFOLIO_DATA.profile.mobile}`} className="hover:text-emerald-300 whitespace-nowrap text-[11px] sm:text-xs">
                     +91 {PORTFOLIO_DATA.profile.mobile}
                   </a>
                 </div>
@@ -563,11 +563,11 @@ PROJECT EXPERIENCE & MODULES:
               <GraduationCap className="w-4 h-4" />
               <span>Education</span>
             </h2>
-            <div className="resume-edu-row flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm">
-              <div className="font-bold text-slate-100">
+            <div className="resume-edu-row flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm gap-1">
+              <div className="font-bold text-slate-100 w-full break-words">
                 {PORTFOLIO_DATA.profile.education.institution}
               </div>
-              <div className="font-mono text-emerald-400 mt-1 sm:mt-0 font-medium">
+              <div className="font-mono text-emerald-400 sm:mt-0 font-medium whitespace-nowrap shrink-0">
                 {PORTFOLIO_DATA.profile.education.period}
               </div>
             </div>

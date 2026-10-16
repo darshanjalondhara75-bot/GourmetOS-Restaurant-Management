@@ -512,7 +512,7 @@ export default function InventoryPanel({ mode }: InventoryPanelProps) {
                       </span>
                       <span className="text-xs font-semibold text-slate-400">Inventory & Kitchen Stock</span>
                     </div>
-                    <h1 className="text-2xl font-black tracking-tight text-slate-950 dark:text-white sm:text-3xl">Inventory & Stock Management</h1>
+                    <h1 className="text-xl font-black tracking-tight text-slate-950 dark:text-white sm:text-3xl">Inventory & Stock Management</h1>
                     <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-500 dark:text-slate-400">
                       Track purchases, kitchen consumption, wastage, low-stock requirements and every stock movement from one professional workspace.
                     </p>

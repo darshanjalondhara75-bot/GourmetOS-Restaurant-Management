@@ -320,68 +320,68 @@ export function LandingSlideDrawer({
       />
 
       {/* Sliding Sheet Panel */}
-      <div className="relative z-10 w-full max-w-xl md:max-w-2xl bg-white dark:bg-[#0c1424] border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col h-full transform transition-transform duration-300 ease-out translate-x-0 overflow-hidden">
+      <div className="relative z-10 w-full sm:max-w-xl md:max-w-2xl bg-white dark:bg-[#0c1424] border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col h-full transform transition-transform duration-300 ease-out translate-x-0 overflow-hidden">
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-md">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-200 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-md gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             {activeFunction === "table-booking" && (
-              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-500 border border-amber-500/20">
-                <Calendar className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-amber-500/10 text-amber-500 border border-amber-500/20 shrink-0">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "culinary-menu" && (
-              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-                <Utensils className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shrink-0">
+                <Utensils className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "auth-portal" && (
-              <div className="p-2 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20">
-                <UserCheck className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20 shrink-0">
+                <UserCheck className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "plan-checkout" && (
-              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-500 border border-amber-500/20">
-                <CreditCard className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-amber-500/10 text-amber-500 border border-amber-500/20 shrink-0">
+                <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "role-portals" && (
-              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-                <ShieldAlert className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shrink-0">
+                <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "qr-menu" && (
-              <div className="p-2 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20">
-                <QrCode className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 shrink-0">
+                <QrCode className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "system-stream" && (
-              <div className="p-2 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20">
-                <Activity className="w-5 h-5" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20 shrink-0">
+                <Activity className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
             )}
             {activeFunction === "snake-studio" && (
-              <div className="p-2 rounded-xl bg-red-600/10 text-red-500 border border-red-500/30">
-                <Eye className="w-5 h-5 animate-pulse" />
+              <div className="p-1.5 sm:p-2 rounded-xl bg-red-600/10 text-red-500 border border-red-500/30 shrink-0">
+                <Eye className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
               </div>
             )}
 
-            <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
-                  {activeFunction === "table-booking" && "Real-Time Table Booking & Slot Deposit"}
-                  {activeFunction === "culinary-menu" && "Gourmet Culinary Menu & Ordering"}
-                  {activeFunction === "auth-portal" && "Access Portals: Sign In & Sign Up"}
-                  {activeFunction === "plan-checkout" && "Plan Subscription & Razorpay Checkout"}
-                  {activeFunction === "role-portals" && "Live Operations Portals & Quick Access"}
-                  {activeFunction === "qr-menu" && "Contactless QR Dining Experience"}
-                  {activeFunction === "system-stream" && "Live SSE Event Stream & Pulse"}
-                  {activeFunction === "snake-studio" && "Cyber Viper Serpent Customizer"}
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white truncate">
+                  {activeFunction === "table-booking" && "Table Booking & Slot Deposit"}
+                  {activeFunction === "culinary-menu" && "Gourmet Culinary Menu"}
+                  {activeFunction === "auth-portal" && "Sign In & Sign Up"}
+                  {activeFunction === "plan-checkout" && "Plan Subscription"}
+                  {activeFunction === "role-portals" && "Operations Portals"}
+                  {activeFunction === "qr-menu" && "QR Dining Experience"}
+                  {activeFunction === "system-stream" && "Live SSE Event Stream"}
+                  {activeFunction === "snake-studio" && "Cyber Viper Customizer"}
                 </h3>
-                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-semibold border border-emerald-500/20">
-                  Slide Active
+                <span className="text-[9px] sm:text-[10px] font-mono uppercase px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-semibold border border-emerald-500/20 shrink-0 hidden sm:inline-block">
+                  Active
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 truncate hidden sm:block">
                 {activeFunction === "table-booking" &&
                   "Lock your table slot securely with Razorpay test mode deposit."}
                 {activeFunction === "culinary-menu" &&
@@ -404,15 +404,15 @@ export function LandingSlideDrawer({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer shrink-0"
             title="Close Drawer (Esc)"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 
         {/* Drawer Body - Scrollable */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6">
           {/* ======================================================== */}
           {/* PANEL 1: TABLE BOOKING & SLOT PAYMENT (RAZORPAY)         */}
           {/* ======================================================== */}
@@ -1221,30 +1221,30 @@ export function LandingSlideDrawer({
           {/* ======================================================== */}
           {activeFunction === "system-stream" && (
             <div className="space-y-6">
-              <div className="grid grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+                  <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     SSE Health
                   </div>
-                  <div className="text-base font-extrabold text-emerald-500 flex items-center gap-1.5 mt-0.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                    <span>Connected</span>
+                  <div className="text-sm sm:text-base font-extrabold text-emerald-500 flex items-center gap-1 sm:gap-1.5 mt-0.5">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-ping" />
+                    <span>Live</span>
                   </div>
                 </div>
-                <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                <div className="p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+                  <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">
                     Latency
                   </div>
-                  <div className="text-base font-extrabold text-slate-900 dark:text-white font-mono mt-0.5">
+                  <div className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white font-mono mt-0.5 whitespace-nowrap">
                     38 ms
                   </div>
                 </div>
-                <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Active Listeners
+                <div className="p-2.5 sm:p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60">
+                  <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Listeners
                   </div>
-                  <div className="text-base font-extrabold text-amber-500 font-mono mt-0.5">
-                    4 Stations
+                  <div className="text-sm sm:text-base font-extrabold text-amber-500 font-mono mt-0.5 whitespace-nowrap">
+                    4 Active
                   </div>
                 </div>
               </div>
@@ -1465,16 +1465,16 @@ export function LandingSlideDrawer({
         </div>
 
         {/* Drawer Footer */}
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/60 flex items-center justify-between">
-          <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span>GourmetOS Real-Time Engine Active</span>
+        <div className="px-4 sm:px-4 py-3 sm:py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/60 flex items-center justify-between gap-3">
+          <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 min-w-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+            <span className="truncate">GourmetOS Real-Time Engine Active</span>
           </span>
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition cursor-pointer"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs font-semibold bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition cursor-pointer shrink-0"
           >
-            Close Panel
+            Close
           </button>
         </div>
       </div>

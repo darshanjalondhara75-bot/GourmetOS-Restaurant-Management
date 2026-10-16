@@ -125,6 +125,7 @@ export function LandingPage() {
 
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
   const [activeRole, setActiveRole] = useState<LandingRole | null>(null);
 
@@ -143,7 +144,7 @@ export function LandingPage() {
   const [menuSearch, setMenuSearch] = useState("");
   const [landingMenuCategories, setLandingMenuCategories] = useState<MenuCategory[]>([]);
   const [landingMenuItems, setLandingMenuItems] = useState<MenuItem[]>([]);
-  const revealObserverRef = useRef<IntersectionObserver | null>(null);
+  const revealObserverRef = useRef<((element: HTMLElement) => void) | null>(null);
 
   // Hero interactive preview tab
   const [previewTab, setPreviewTab] = useState<PreviewTab>("tables");
@@ -154,10 +155,26 @@ export function LandingPage() {
   const [demoStock, setDemoStock] = useState(18);
   const [demoEvent, setDemoEvent] = useState<string | null>(null);
 
-  // Close mobile menu on route change
   useEffect(() => {
-    setMobileMenuOpen(false);
+    const handleScroll = () => {
+      const sections = ["menu-showcase", "pillars", "workflow", "pricing", "faq"];
+      const scrollPosition = window.scrollY + 200;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu on route change
 
   useEffect(() => {
     Promise.all([getCategories(), getMenuItems()]).then(([categories, items]) => {
@@ -256,24 +273,81 @@ export function LandingPage() {
     if (!landingPage || !("IntersectionObserver" in window)) return;
 
     landingPage.classList.add("landing-motion-ready");
+
+    const pending = new Set<HTMLElement>();
+    let frame = 0;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("landing-drawer-visible");
-            observer.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) reveal(entry.target as HTMLElement);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+      // threshold 0 → a block reveals on its first pixel of contact. The old
+      // 0.12 ratio was unreachable for sections taller than ~8x the viewport
+      // (long dish grids, pillar lists), which left them permanently at
+      // opacity:0. The positive bottom margin starts the fade ~15% before the
+      // block scrolls into view so nothing is ever blank on arrival.
+      { threshold: 0, rootMargin: "0px 0px 15% 0px" }
     );
-    revealObserverRef.current = observer;
+
+    function reveal(element: HTMLElement) {
+      pending.delete(element);
+      element.classList.add("landing-drawer-visible");
+      observer.unobserve(element);
+    }
+
+    function schedule() {
+      if (frame) return;
+      frame = window.requestAnimationFrame(sweep);
+    }
+
+    function sweep() {
+      frame = 0;
+      if (pending.size === 0) return;
+      const limit = window.innerHeight * 0.85;
+      pending.forEach((element) => {
+        if (element.getBoundingClientRect().top <= limit) reveal(element);
+      });
+      if (pending.size === 0) {
+        window.removeEventListener("scroll", schedule);
+        window.removeEventListener("resize", schedule);
+      }
+    }
+
+    function stopSweep() {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    }
+
+    const observeOne = (element: HTMLElement) => {
+      if (element.classList.contains("landing-drawer-visible")) return;
+      pending.add(element);
+      observer.observe(element);
+      schedule();
+    };
 
     landingPage
       .querySelectorAll<HTMLElement>("[data-drawer-reveal]")
-      .forEach((element) => observer.observe(element));
+      .forEach((element) => {
+        pending.add(element);
+        observer.observe(element);
+      });
+
+    // Safety net: IntersectionObserver only samples once per frame, so an
+    // ultra-fast fling can carry a block past the viewport between two samples.
+    // This rAF-throttled sweep guarantees anything already at (or above) the
+    // fold is revealed no matter how fast the page was scrolled.
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    schedule();
+
+    revealObserverRef.current = observeOne;
 
     return () => {
+      stopSweep();
       observer.disconnect();
       revealObserverRef.current = null;
       landingPage.classList.remove("landing-motion-ready");
@@ -283,7 +357,7 @@ export function LandingPage() {
   useEffect(() => {
     document
       .querySelectorAll<HTMLElement>("#dishes-grid > [data-drawer-reveal]")
-      .forEach((element) => revealObserverRef.current?.observe(element));
+      .forEach((element) => revealObserverRef.current?.(element));
   }, [landingMenuCategory, landingMenuItemCount, menuSearch]);
 
   return (
@@ -379,14 +453,20 @@ export function LandingPage() {
                   { label: "FAQ", icon: ChevronDown, href: "#faq" },
                 ].map((item) => {
                   const Icon = item.icon;
+                  const id = item.href.replace("#", "");
+                  const isActive = activeSection === id;
                   return (
                     <a
                       key={item.label}
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition"
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition ${
+                        isActive
+                          ? "bg-emerald-500/10 text-emerald-500 border-l-4 border-emerald-500"
+                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                      }`}
                     >
-                      <Icon className="w-4 h-4 text-emerald-500" />
+                      <Icon className={`w-4 h-4 ${isActive ? "text-emerald-500" : "text-emerald-500"}`} />
                       {item.label}
                     </a>
                   );
@@ -980,10 +1060,10 @@ export function LandingPage() {
                     alt={dish.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-slate-950/80 text-amber-400 backdrop-blur-md border border-amber-500/30 shadow">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-slate-950/80 text-amber-400 backdrop-blur-md border border-amber-500/30 shadow whitespace-nowrap">
                       {dish.is_veg ? "VEG" : "NON-VEG"}
                     </span>
-                  <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-950/80 text-white backdrop-blur-md">
+                  <span className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-slate-950/80 text-white backdrop-blur-md whitespace-nowrap">
                     ${Number(dish.price).toFixed(2)}
                   </span>
                 </div>
@@ -1013,7 +1093,7 @@ export function LandingPage() {
       <section data-drawer-reveal className="border-y border-slate-200/80 dark:border-slate-800/80 bg-slate-50/60 dark:bg-slate-900/40 backdrop-blur-md py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div className="space-y-1">
-            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono">
+            <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono whitespace-nowrap">
               &lt; 38 ms
             </div>
             <div className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -1021,7 +1101,7 @@ export function LandingPage() {
             </div>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-500 font-mono">
+            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-500 font-mono whitespace-nowrap">
               100%
             </div>
             <div className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -1029,7 +1109,7 @@ export function LandingPage() {
             </div>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl sm:text-4xl font-extrabold text-amber-500 font-mono">
+            <div className="text-3xl sm:text-4xl font-extrabold text-amber-500 font-mono whitespace-nowrap">
               +40%
             </div>
             <div className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -1037,7 +1117,7 @@ export function LandingPage() {
             </div>
           </div>
           <div className="space-y-1">
-            <div className="text-3xl sm:text-4xl font-extrabold text-sky-500 font-mono">
+            <div className="text-3xl sm:text-4xl font-extrabold text-sky-500 font-mono whitespace-nowrap">
               99.99%
             </div>
             <div className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400">

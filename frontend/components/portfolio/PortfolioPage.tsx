@@ -41,11 +41,13 @@ export default function PortfolioPage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("draw-in-visible");
-            observer.unobserve(entry.target);
+          } else {
+            // Removed this line to keep sections visible once they have animated in.
+            // This prevents the "blank page" issue when scrolling up and down.
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.01, rootMargin: "200px" }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -419,19 +421,19 @@ export default function PortfolioPage() {
 
       {/* Resume Quick-View Modal */}
       {resumeModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md no-print">
-          <div className="relative w-full max-w-3xl max-h-[90vh] bg-slate-950 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 overflow-y-auto shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md no-print">
+          <div className="relative w-full max-w-3xl max-h-[90vh] bg-slate-950 border border-emerald-500/30 rounded-3xl p-4 sm:p-8 overflow-y-auto shadow-2xl">
             {/* Modal Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
-              <div>
-                <h3 className="text-xl font-bold text-slate-100">{PORTFOLIO_DATA.profile.name} — Resume</h3>
-                <p className="text-xs text-emerald-400 font-mono">{PORTFOLIO_DATA.profile.title}</p>
+            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6 gap-2">
+              <div className="min-w-0">
+                <h3 className="text-base sm:text-xl font-bold text-slate-100 truncate">{PORTFOLIO_DATA.profile.name} — Resume</h3>
+                <p className="text-xs text-emerald-400 font-mono truncate">{PORTFOLIO_DATA.profile.title}</p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 <button
                   onClick={handlePrint}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shrink-0"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span>Print / PDF</span>
@@ -439,7 +441,7 @@ export default function PortfolioPage() {
 
                 <button
                   onClick={() => setResumeModalOpen(false)}
-                  className="p-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                  className="p-1.5 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800 shrink-0"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -449,10 +451,10 @@ export default function PortfolioPage() {
             {/* Modal Body: Compact Executive Summary */}
             <div className="space-y-5 text-xs sm:text-sm text-slate-300">
               {/* Contact */}
-              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-                <div>Email: {PORTFOLIO_DATA.profile.email}</div>
-                <div>Phone: +91 {PORTFOLIO_DATA.profile.mobile}</div>
-                <div>Education: {PORTFOLIO_DATA.profile.education.institution} ({PORTFOLIO_DATA.profile.education.period})</div>
+              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-mono">
+                <div className="whitespace-nowrap overflow-x-auto">Email: {PORTFOLIO_DATA.profile.email}</div>
+                <div className="whitespace-nowrap">Phone: +91 {PORTFOLIO_DATA.profile.mobile}</div>
+                <div className="break-words">Education: {PORTFOLIO_DATA.profile.education.institution} ({PORTFOLIO_DATA.profile.education.period})</div>
               </div>
 
               {/* Skills */}

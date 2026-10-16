@@ -70,12 +70,12 @@ export default function AboutSection() {
         {/* Narrative & Focus Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
           {/* Detailed Biography (7 cols) */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-slate-900/60 dark:bg-slate-900/80 border border-emerald-500/20 backdrop-blur-md">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-slate-900/60 dark:bg-slate-900/80 border border-emerald-500/20 backdrop-blur-md min-w-0">
             <h3 className="text-xl font-bold text-slate-100 mb-4 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-              <span>Engineering Philosophy &amp; Experience</span>
+              <span className="min-w-0 break-words">Engineering Philosophy &amp; Experience</span>
             </h3>
-            <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed break-words">
               <p>
                 My development experience is demonstrated through the creation of{" "}
                 <strong className="text-slate-100 font-semibold">GourmetOS</strong>, a comprehensive restaurant

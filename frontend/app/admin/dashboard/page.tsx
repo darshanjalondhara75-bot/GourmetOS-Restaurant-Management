@@ -107,7 +107,7 @@ export default function AdminDashboardPage() {
                   <span className="text-xs text-slate-300 dark:text-slate-600">/</span>
                   <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">Admin control room</span>
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">{BRAND_NAME} Operations</h1>
+                <h1 className="text-xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">{BRAND_NAME} Operations</h1>
                 <p className="text-sm text-slate-500 dark:text-slate-400 font-medium mt-1">Good to see you, {user?.name || "Admin"}. Here is what needs your attention today.</p>
               </div>
               <div className="flex items-center gap-2 shrink-0 w-full lg:w-auto justify-center lg:justify-start">
@@ -192,15 +192,15 @@ export default function AdminDashboardPage() {
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-x-2 gap-y-1">
-                              <span className="text-sm font-extrabold text-slate-900 dark:text-slate-100">{ord.order_id}</span>
-                              <span className="rounded-md bg-slate-200/70 dark:bg-slate-700 px-1.5 py-0.5 text-[9px] font-extrabold tracking-wide text-slate-600 dark:text-slate-400">TABLE {ord.table_number}</span>
+                              <span className="text-sm font-extrabold text-slate-900 dark:text-slate-100 whitespace-nowrap">{ord.order_id}</span>
+                              <span className="rounded-md bg-slate-200/70 dark:bg-slate-700 px-1.5 py-0.5 text-[9px] font-extrabold tracking-wide text-slate-600 dark:text-slate-400 whitespace-nowrap">TABLE {ord.table_number}</span>
                             </div>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed truncate sm:whitespace-normal">{ord.items?.map((item) => `${item.quantity}x ${item.name}`).join(", ")}</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed truncate sm:whitespace-normal break-words">{ord.items?.map((item) => `${item.quantity}x ${item.name}`).join(", ")}</p>
                           </div>
                         </div>
                         <div className="flex shrink-0 flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1.5 text-right mt-2 sm:mt-0 border-t sm:border-t-0 pt-2 sm:pt-0">
-                          <p className="text-sm font-black text-slate-900 dark:text-slate-100">${ord.total_amount.toFixed(2)}</p>
-                          <span className={`rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wide ring-1 ${orderStatus.className}`}>{orderStatus.label}</span>
+                          <p className="text-sm font-black text-slate-900 dark:text-slate-100 whitespace-nowrap">${ord.total_amount.toFixed(2)}</p>
+                          <span className={`rounded-full px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wide ring-1 whitespace-nowrap ${orderStatus.className}`}>{orderStatus.label}</span>
                         </div>
                       </div>
                     );

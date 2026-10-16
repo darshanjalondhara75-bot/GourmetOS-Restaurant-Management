@@ -203,8 +203,8 @@ function UserOrdersContent() {
         <div className="p-4 sm:p-5 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-2 py-1 rounded-full text-[10px] font-black bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">{order.order_id}</span>
-              <span className={`px-2 py-1 rounded-full text-[10px] font-black ${meta.tone === "emerald" ? "bg-emerald-50 text-emerald-700" :
+              <span className="px-2 py-1 rounded-full text-[10px] font-black bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 whitespace-nowrap">{order.order_id}</span>
+              <span className={`px-2 py-1 rounded-full text-[10px] font-black whitespace-nowrap ${meta.tone === "emerald" ? "bg-emerald-50 text-emerald-700" :
                   meta.tone === "sky" ? "bg-sky-50 text-sky-700" :
                     meta.tone === "violet" ? "bg-violet-50 text-violet-700" :
                       meta.tone === "indigo" ? "bg-indigo-50 text-indigo-700" :
@@ -216,23 +216,23 @@ function UserOrdersContent() {
             <h2 className="mt-2 text-lg font-black text-slate-900 dark:text-slate-100">Table #{order.table_number}</h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{new Date(order.created_at).toLocaleString()}</p>
             {order.order_token && (
-              <p className="mt-1.5 inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-2.5 py-1 text-[10px] font-black tracking-wide text-emerald-700 dark:text-emerald-300">
+              <p className="mt-1.5 inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-950/30 px-2.5 py-1 text-[10px] font-black tracking-wide text-emerald-700 dark:text-emerald-300 whitespace-nowrap">
                 Token {order.order_token}
               </p>
             )}
           </div>
           <div className="flex items-center gap-2 shrink-0 flex-wrap">
-            <div className={`px-3 py-2 rounded-xl text-xs font-bold ${paymentStyle}`}>
+            <div className={`px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap ${paymentStyle}`}>
               <CreditCard className="w-3.5 h-3.5 inline mr-1" />{paymentLabel}
             </div>
             <button
               onClick={() => printOrderReceipt(order)}
-              className="btn-secondary text-xs font-bold py-2.5 px-3 inline-flex items-center gap-1.5"
+              className="btn-secondary text-xs font-bold py-2.5 px-3 inline-flex items-center gap-1.5 whitespace-nowrap"
               title="Print customer receipt"
             >
               <Printer className="w-3.5 h-3.5" /> Receipt
             </button>
-            <Link href={`/customer/order-status/${order.order_id}`} className="btn-secondary text-xs font-bold py-2.5 px-3 inline-flex items-center gap-1.5">
+            <Link href={`/customer/order-status/${order.order_id}`} className="btn-secondary text-xs font-bold py-2.5 px-3 inline-flex items-center gap-1.5 whitespace-nowrap">
               Open Tracker <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -264,10 +264,10 @@ function UserOrdersContent() {
             {order.items.map((item, idx) => (
               <div key={`${item.item_id}-${idx}`} className="flex items-center justify-between gap-3 text-xs">
                 <div className="min-w-0 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center font-black">{item.quantity}</span>
+                  <span className="w-6 h-6 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center font-black shrink-0">{item.quantity}</span>
                   <span className="font-semibold text-slate-700 dark:text-slate-300 truncate">{item.name}</span>
                 </div>
-                <span className="font-black text-slate-800 dark:text-slate-200">${(item.price * item.quantity).toFixed(2)}</span>
+                <span className="font-black text-slate-800 dark:text-slate-200 whitespace-nowrap">${(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -275,15 +275,15 @@ function UserOrdersContent() {
             <div>
               <span className="text-sm font-black text-slate-700 dark:text-slate-300 block">Total</span>
               {order.payment_method === "Online" && (
-                <span className="text-[10px] text-slate-500 font-medium block">
+                <span className="text-[10px] text-slate-500 font-medium block whitespace-nowrap">
                   Rate: 1 USD = ₹{(order.payment_exchange_rate || 83).toFixed(2)}
                 </span>
               )}
             </div>
             <div className="text-right">
-              <span className="text-lg font-black text-indigo-700 dark:text-indigo-400 block">${order.total_amount.toFixed(2)}</span>
+              <span className="text-lg font-black text-indigo-700 dark:text-indigo-400 block whitespace-nowrap">${order.total_amount.toFixed(2)}</span>
               {order.payment_method === "Online" && (
-                <span className="text-[11px] font-bold text-emerald-600 block">
+                <span className="text-[11px] font-bold text-emerald-600 block whitespace-nowrap">
                   {order.payment_status === "Paid"
                     ? `Paid: ₹${(order.paid_amount ?? (order.total_amount * (order.payment_exchange_rate || 83))).toFixed(2)} INR`
                     : `Razorpay: ₹${(order.total_amount * (order.payment_exchange_rate || 83)).toFixed(2)} INR`}

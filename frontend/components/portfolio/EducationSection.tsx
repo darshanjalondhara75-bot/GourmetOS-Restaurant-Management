@@ -57,15 +57,15 @@ export default function EducationSection() {
         {/* 2-Column Responsive Layout - Fills Desktop Widescreen Beautifully */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-10">
           {/* Left Column: Primary Academic Institution Card (6 cols) */}
-          <div className="lg:col-span-6 flex flex-col justify-between p-8 sm:p-10 rounded-3xl bg-slate-900/80 border border-emerald-500/30 backdrop-blur-xl shadow-2xl">
+          <div className="lg:col-span-6 flex flex-col justify-between p-4 sm:p-8 lg:p-10 rounded-3xl bg-slate-900/80 border border-emerald-500/30 backdrop-blur-xl shadow-2xl">
             <div>
               {/* Institution Header */}
-              <div className="flex items-start gap-5 mb-6">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0 shadow-lg shadow-emerald-500/15">
-                  <GraduationCap className="w-9 h-9 sm:w-11 sm:h-11" />
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-5 mb-6 w-full">
+                <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0 shadow-lg shadow-emerald-500/15">
+                  <GraduationCap className="w-6 h-6 sm:w-11 sm:h-11" />
                 </div>
 
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 flex-1 w-full">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/25">
                       Higher Education
@@ -76,7 +76,7 @@ export default function EducationSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight leading-snug">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-100 tracking-tight leading-snug w-full break-words">
                     {PORTFOLIO_DATA.profile.education.institution}
                   </h3>
                 </div>
@@ -135,7 +135,7 @@ export default function EducationSection() {
           </div>
 
           {/* Right Column: Academic Engineering Disciplines (6 cols) */}
-          <div className="lg:col-span-6 flex flex-col justify-between p-8 sm:p-10 rounded-3xl bg-slate-900/80 border border-emerald-500/30 backdrop-blur-xl shadow-2xl">
+          <div className="lg:col-span-6 flex flex-col justify-between p-4 sm:p-8 lg:p-10 rounded-3xl bg-slate-900/80 border border-emerald-500/30 backdrop-blur-xl shadow-2xl">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <BookOpen className="w-5 h-5 text-emerald-400" />

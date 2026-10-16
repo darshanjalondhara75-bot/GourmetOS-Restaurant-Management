@@ -138,7 +138,7 @@ export default function AdminOrdersPage() {
   return (
     <PageWrapper>
       <>
-        <div className="min-h-screen bg-[#f7f8fc] dark:bg-slate-950 flex flex-col transition-colors duration-300">
+        <div className="page-with-fixed-nav min-h-screen bg-[#f7f8fc] dark:bg-slate-950 flex flex-col transition-colors duration-300">
         <Navbar />
         <div className="flex flex-1">
           <Sidebar />

@@ -705,7 +705,7 @@ export default function CustomerMenuPage() {
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="font-black text-slate-900 text-base leading-tight break-words">{item.name}</h3>
                   <div className="flex items-center gap-2 shrink-0">
-                    <span className="font-black text-indigo-600 text-base">${item.price.toFixed(2)}</span>
+                    <span className="font-black text-indigo-600 text-base whitespace-nowrap">${item.price.toFixed(2)}</span>
                     {isChef && (
                       <div className="flex items-center gap-1">
                         <button
@@ -745,13 +745,13 @@ export default function CustomerMenuPage() {
                       <button onClick={() => updateQuantity(item.id, -1)} className="w-9 h-8 bg-white rounded-lg flex items-center justify-center shadow-sm hover:bg-slate-50 transition">
                         <Minus className="w-3.5 h-3.5 text-indigo-700" />
                       </button>
-                      <span className="font-extrabold text-indigo-900 text-xs"> {itemInCart.quantity} Added</span>
+                      <span className="font-extrabold text-indigo-900 text-xs whitespace-nowrap"> {itemInCart.quantity} Added</span>
                       <button onClick={() => updateQuantity(item.id, 1)} className="w-9 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center shadow-sm hover:bg-indigo-700 transition">
                         <Plus className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   ) : (
-                    <button onClick={() => addToCart(item)} disabled={!item.is_available || !sessionReady || sessionEnded} className="w-full btn-primary py-2.5 text-xs font-bold flex items-center justify-center gap-1">
+                    <button onClick={() => addToCart(item)} disabled={!item.is_available || !sessionReady || sessionEnded} className="w-full btn-primary py-2.5 text-xs font-bold flex items-center justify-center gap-1 whitespace-nowrap">
                       {!sessionReady || sessionEnded ? "Dining Session Required" : item.is_available ? <><Plus className="w-3.5 h-3.5" /> Add to Table Cart</> : "Currently Sold Out"}
                     </button>
                   )}

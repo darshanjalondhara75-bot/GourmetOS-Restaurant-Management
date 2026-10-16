@@ -236,10 +236,10 @@ function UserPlansContent() {
                   </div>
                 </div>
 
-                <div className="mt-5 flex items-end gap-1">
-                  <span className="text-3xl font-black text-slate-900 dark:text-slate-100">₹{plan.price_inr}</span>
-                  <span className="text-xs font-bold text-slate-400 mb-1.5">/ {plan.period}</span>
-                  <span className="ml-auto text-[11px] font-semibold text-slate-400 mb-1.5">≈ ${plan.price_usd}</span>
+                <div className="mt-5 flex items-end gap-1 flex-wrap">
+                  <span className="text-3xl font-black text-slate-900 dark:text-slate-100 whitespace-nowrap">₹{plan.price_inr}</span>
+                  <span className="text-xs font-bold text-slate-400 mb-1.5 whitespace-nowrap">/ {plan.period}</span>
+                  <span className="ml-auto text-[11px] font-semibold text-slate-400 mb-1.5 whitespace-nowrap">≈ ${plan.price_usd}</span>
                 </div>
 
                 <ul className="mt-5 space-y-2.5 flex-1">
@@ -315,8 +315,8 @@ function UserPlansContent() {
                   )}
                 </div>
                 <div className="text-left sm:text-right shrink-0">
-                  <span className="text-base font-black text-indigo-700 dark:text-indigo-400">₹{tx.amount_inr}</span>
-                  <span className="block text-[10px] text-slate-400">≈ ${tx.amount_usd}</span>
+                  <span className="text-base font-black text-indigo-700 dark:text-indigo-400 whitespace-nowrap">₹{tx.amount_inr}</span>
+                  <span className="block text-[10px] text-slate-400 whitespace-nowrap">≈ ${tx.amount_usd}</span>
                 </div>
               </div>
             ))}

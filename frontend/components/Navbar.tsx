@@ -96,31 +96,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
     switch (role) {
       case "admin":
         return (
-          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-purple-50 text-purple-600 border border-purple-100/50 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800/50">
+          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-purple-50 text-purple-600 border border-purple-100/50 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800/50 whitespace-nowrap">
             <Shield className="w-2.5 h-2.5" /> Admin
           </span>
         );
       case "cashier":
         return (
-          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-100/50 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800/50">
+          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-100/50 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800/50 whitespace-nowrap">
             <Receipt className="w-2.5 h-2.5" /> Cashier
           </span>
         );
       case "user":
         return (
-          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100/50 dark:bg-indigo-900/30 dark:text-indigo-300 dark:border-indigo-800/50">
+          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100/50 dark:bg-indigo-900/30 dark:text-indigo-300 dark:border-indigo-800/50 whitespace-nowrap">
             <User className="w-2.5 h-2.5" /> User
           </span>
         );
       case "chef":
         return (
-          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-50 text-amber-600 border border-amber-100/50 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800/50">
+          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-amber-50 text-amber-600 border border-amber-100/50 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800/50 whitespace-nowrap">
             <ChefHat className="w-2.5 h-2.5" /> Chef
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-slate-50 text-slate-600 border border-slate-100/50 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700">
+          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-slate-50 text-slate-600 border border-slate-100/50 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700 whitespace-nowrap">
             <User className="w-2.5 h-2.5" /> Guest
           </span>
         );

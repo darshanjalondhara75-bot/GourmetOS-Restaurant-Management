@@ -18,7 +18,7 @@ import { useTheme } from "@/lib/themeContext";
 
 export default function DesignSystemSection() {
   const { theme, toggleTheme } = useTheme();
-  const [activePreview, setActivePreview] = useState<"buttons" | "cards" | "inputs" | "colors">("colors");
+  const [activePreview, setActivePreview] = useState<"buttons" | "cards" | "inputs">("buttons");
 
   const colors = [
     { name: "Primary Emerald", hex: "#10B981", rgb: "16, 185, 129", role: "Primary Accent & Positive Badges" },
@@ -107,19 +107,19 @@ export default function DesignSystemSection() {
 
           {/* Interactive UI Components Gallery (7 cols) */}
           <div className="lg:col-span-7 p-6 rounded-2xl bg-slate-900/70 border border-emerald-500/20">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pb-4 border-b border-slate-800 mb-6">
               <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
-                <Layers className="w-4 h-4 text-emerald-400" />
+                <Layers className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Verified Design Tokens &amp; Components</span>
               </h3>
 
               {/* Sub-tabs */}
-              <div className="flex items-center gap-1.5 text-xs">
+              <div className="flex items-center justify-start sm:justify-end gap-1.5 text-xs shrink-0">
                 {(["buttons", "cards", "inputs"] as const).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActivePreview(tab)}
-                    className={`px-3 py-1 rounded-lg capitalize font-medium transition-all ${
+                    className={`px-3 py-1 rounded-lg capitalize font-medium whitespace-nowrap transition-all ${
                       activePreview === tab
                         ? "bg-emerald-500 text-slate-950 font-bold"
                         : "text-slate-400 hover:text-white"

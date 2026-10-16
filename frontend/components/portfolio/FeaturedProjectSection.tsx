@@ -69,13 +69,13 @@ export default function FeaturedProjectSection() {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Level 3: Primary Development Project</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-100">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-100">
             Restaurant Management &amp; Ordering System
           </h2>
-          <p className="mt-2 text-lg sm:text-xl font-medium text-emerald-400 font-mono">
+          <p className="mt-2 text-sm sm:text-lg sm:text-xl font-medium text-emerald-400 font-mono break-words leading-relaxed max-w-full">
             GourmetOS — Full-Stack Real-Time Production Platform
           </p>
-          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          <p className="mt-4 text-xs sm:text-base lg:text-lg text-slate-300 leading-relaxed">
             An enterprise-grade, multi-terminal restaurant operations platform engineered with Python FastAPI on the
             backend and Next.js 16 (React 19) on the frontend.
           </p>
@@ -136,7 +136,7 @@ export default function FeaturedProjectSection() {
               <button
                 key={tab.id}
                 onClick={() => handleCategoryChange(tab.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 rounded-xl text-[11px] sm:text-sm font-semibold whitespace-nowrap transition-all flex items-center gap-2 ${
                   isSelected
                     ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/30"
                     : "bg-slate-800/60 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60"
@@ -156,7 +156,7 @@ export default function FeaturedProjectSection() {
         </div>
 
         {/* Interactive Screenshot Showcase Viewer */}
-        <div className="rounded-3xl p-6 sm:p-8 bg-slate-900/80 border border-emerald-500/30 backdrop-blur-xl shadow-2xl mb-8">
+        <div className="rounded-3xl p-4 sm:p-8 bg-slate-900/80 border border-emerald-500/30 backdrop-blur-xl shadow-2xl mb-8">
           {/* Active Screenshot Display */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Screenshot Frame (7 cols) */}
@@ -229,17 +229,17 @@ export default function FeaturedProjectSection() {
         </div>
 
         {/* Categorized Thumbnail Gallery */}
-        <div className="rounded-3xl p-6 sm:p-8 bg-slate-900/60 border border-slate-800">
-          <div className="flex items-center justify-between mb-6">
+        <div className="rounded-3xl p-4 sm:p-8 bg-slate-900/60 border border-slate-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-6">
             <h3 className="text-base sm:text-lg font-bold text-slate-100 flex items-center gap-2">
-              <Images className="w-5 h-5 text-emerald-400" />
+              <Images className="w-5 h-5 text-emerald-400 shrink-0" />
               <span>
                 {activeCategory === "all"
                   ? "All Verified Captures"
                   : `${CATEGORY_LABELS[activeCategory as GalleryImage["category"]]} Captures`}
               </span>
             </h3>
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs font-mono text-slate-400 shrink-0">
               {filtered.length} {filtered.length === 1 ? "capture" : "captures"} · click to inspect
             </span>
           </div>
